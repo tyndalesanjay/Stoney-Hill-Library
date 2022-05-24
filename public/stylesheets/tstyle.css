@@ -1,0 +1,17 @@
+
+ .container{
+   width: 100%;
+ } 
+
+  table{
+     position: relative;
+     top: 50%;
+   }
+   
+   table,td :hover{
+     cursor: pointer;
+   }
+
+   table .row :hover{
+      background: #4b7668;
+   }

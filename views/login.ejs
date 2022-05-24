@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title><%= title %></title>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <link rel='stylesheet' href='/stylesheets/login.css' />
+    </head>
+
+    <body>
+        <div class="body_contain">
+            <div class="left">
+                <img src="https://i.pinimg.com/originals/21/1b/dc/211bdcd7c9e5f021c2ff67657ecc1aac.png" alt="">
+            </div>
+
+            <div class="right">
+                <div class="form_ctrl">
+                    <form action="login/authlogin" method="post">
+                        <h1>Trainee Login</h1>
+            
+                        <div class="input_ctrl">
+                            <label for="email">Email</label><br>
+                            <input type="text" id="email" name="email" placeholder="trainee.email@address.com">
+                        </div>
+                        <div class="input_ctrl">
+                            <label for="password">Password</label><br>
+                            <input type="password" id="password" name="password" placeholder="Password">
+                        </div>
+            
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

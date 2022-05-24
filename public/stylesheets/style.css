@@ -1,0 +1,201 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background: #b8e4d5 !important;
+}
+
+/* ***************INDEX**************** */
+/* header*********************** */
+header{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.logo img{
+  width: 20%;
+}
+
+header>a{
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 0.5% 1%;
+  text-decoration: none;
+  color: #4b7668;
+}
+
+header>a:hover{
+  border: none;
+  background: #4b7668;
+  color: #b8e4d5;
+}
+
+/* index_section*********************** */
+.index_section{
+  display: flex;
+  justify-content: space-between;
+}
+.index_section .left{
+  /* border: 1px solid red; */
+  width: 50%;
+  padding: 5%;
+  text-align: left;
+}
+.index_section .left h1{
+  font-size: 80px;
+  font-weight: bold;
+  color: #4b7668;
+}
+.index_section .left h2{
+  font-size: 50px;
+  font-weight: bold;
+  color: #4b7668;
+}
+.index_section .left h3, .index_section .left p{
+  color: #4b7668;
+}
+.index_section .left a{
+  border-radius: 20px;
+  background:#4b7668;
+  padding: 2%;
+  text-decoration: none;
+  text-align: right;
+  color: white;
+}
+
+.index_section .right{
+  /* border: 1px solid red; */
+  width: 50%;
+  padding: 5%;
+}
+.index_section .right img{
+  width: 100%;
+}
+
+/* footer*********************** */
+footer{
+  background: #95baad;
+  padding: 5%;
+  position: relative;
+}
+
+footer section{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.one, .two, .three, .four{
+  display: flex;
+  flex-direction: column;
+}
+.one h1, .two h1, .three h1, .four h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: lighter;
+  color: #38584e;
+}
+.one a,.two a, .three a, .four a{
+  text-decoration: none;
+  color: white;
+  padding: 2% 0 ;
+}
+.one a:hover, .two a:hover, .three a:hover, .four a:hover{
+  text-decoration: underline #38584e;
+}
+
+/* admin login*********************** */
+footer>a{
+  /* border: 1px solid red; */
+  text-decoration: none;
+  color: #95baad;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor:default;
+}
+
+/* admin links*********************** */
+.admin_links{
+  /* border: 1px solid red; */
+  padding: 20%;
+  position: relative;
+  text-align: center;
+}
+
+.admin_links>a{
+  text-decoration: none;
+  color: #b8e4d5;
+  background: #38584e;
+  padding: 5%;
+  margin: 0 4%;
+}
+.admin_links a:hover{
+  background: #4b7668;
+  color: #95baad;
+}
+
+/* lunches table*********************** */
+.lunch_table{
+width: 80%;
+margin-left: 50%;
+transform: translateX(-50%);
+}
+/* Meals form******************* */
+.meals_container{
+  padding: 3%;
+}
+
+.meals_form{
+  border: 1px solid grey;
+  width: 70%;
+  padding: 20px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.meals_form_inputs{
+  text-align: center;
+  padding-bottom: 2%;
+  border-bottom: 1px solid grey;
+}
+.meals_form_inputs input{
+  padding: 1%;
+  margin: 0 3%;
+  border: none;
+  outline: none;
+}
+
+.meal{
+  /* border: 1px solid red; */
+  margin: 3% 0;
+  text-align: center;
+}
+.meal label{
+  font-weight: bold;
+}
+
+.meals_form button{
+  font-weight: bold;
+  cursor: pointer;
+  background: rgb(75, 118, 104);
+  border-radius: 5px;
+  padding: 1% 3%;
+  margin-left: 50%;
+  transform:translateX(-50%);
+  color: rgb(254, 254, 254);
+  border: none;
+  outline: none;
+}
+.meals_form button:hover{
+  background: #376656;
+}
+
+
+

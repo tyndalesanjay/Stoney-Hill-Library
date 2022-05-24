@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/tstyle.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img
+        src="https://cdn.discordapp.com/attachments/882362353507778613/975983795847172156/logo2-01-removebg-preview.png"
+        alt="logo">
+    </div>
+  
+    <a href="">Sign in</a>
+  </header>
+  <br><br>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Borrowed</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% 
+        if(students.length){
+        
+        for(var i = 0; i< students.length; i++) {
+      %> 
+        <tr>
+          <td scope="row"><%= trainees[i].id %></td>
+          <td scope="row"><%= trainees[i].cohort %></td>
+          <td scope="row"><%= trainees[i].firstNm %></td>
+          <td scope="row"><%= trainees[i].lastNm %></td>
+          <td scope="row"><%= trainees[i].date_joined.toLocaleDateString() %></td>
+        </tr>
+      <% } 
+      }else { %>
+          <tr>
+            <td colspan="3">No Records Found</td>
+          </tr>
+      <% } %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
