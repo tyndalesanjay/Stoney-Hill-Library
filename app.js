@@ -9,7 +9,6 @@ var session = require('express-session')
 var flash = require('express-flash')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var booksRouter = require('./routes/books');
 var adminRouter = require('./routes/admin');
 var loginRouter = require('./routes/login');
@@ -40,7 +39,6 @@ app.use(session({
 app.use(flash());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/admin', adminRouter);
 app.use('/login', loginRouter);

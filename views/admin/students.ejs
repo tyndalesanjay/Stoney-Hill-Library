@@ -38,11 +38,11 @@
         for(var i = 0; i< students.length; i++) {
       %> 
         <tr>
-          <td scope="row"><%= trainees[i].id %></td>
-          <td scope="row"><%= trainees[i].cohort %></td>
-          <td scope="row"><%= trainees[i].firstNm %></td>
-          <td scope="row"><%= trainees[i].lastNm %></td>
-          <td scope="row"><%= trainees[i].date_joined.toLocaleDateString() %></td>
+          <td scope="row"><%= students[i].id %></td>
+          <!-- <td scope="row"><%= students[i].cohort %></td> -->
+          <td scope="row"><%= students[i].fname %></td>
+          <td scope="row"><%= students[i].lname %></td>
+          <td scope="row"><%= students[i].borrowed %></td>
         </tr>
       <% } 
       }else { %>

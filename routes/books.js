@@ -6,38 +6,80 @@ var dateTime = require('node-datetime');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    // CHECK LOGIN
-    // if(req.session.loggedin === true){
         var dt = dateTime.create();
-        var formatted = dt.format('Y-m-d H:M:S');
+        var formatted = dt.format('Y/m/d H:M:S');
+
+        const today = new Date();
+        var duedate = new Date();
+            duedate.setDate(today.getDate(formatted) + 14);
 
         conn.query('SELECT * FROM books', (err, rows) => {
             if (err){
-                res.render('meals', { 
+                res.render('books', { 
                     title: 'books', 
                     books: '',
-                    dateTime: formatted
+                    dateTime: formatted,
+                    date_due: duedate
+
                 });
             }else{
-                res.render('meals', {
+                res.render('books', {
                     title: 'Books', 
                     books: rows,
-                    dateTime: formatted
+                    dateTime: formatted,
+                    date_due: duedate
                 });
             }
         });
 });
 
-// router.post('/add', (req, res) => {
-//     var train = "INSERT INTO cafeteria.lunchtbl (option_name, trainee_id, date) VALUES ('" + req.body.option_name + 
-//     "', '" + req.body.trainee_id +
-//     "', '" + req.body.date +
-//     "')";
-//     conn.query(train, (err, results) => {
-//         if (err) throw err
-//         res.send(results)
-//     });
-// });
+router.get('/search', (req, res) => {
+
+    var dt = dateTime.create();
+        var formatted = dt.format('Y/m/d H:M:S');
+
+        const today = new Date();
+        var duedate = new Date();
+            duedate.setDate(today.getDate(formatted) + 14);
+
+    var category_name = req.query.category_name;
+    var sql = "SELECT * FROM library.books WHERE category_name LIKE '%"+ category_name +"%'";
+
+    conn.query(sql , (err, rows) => {
+        if (err){
+            console.log(err)
+            res.render('books', { 
+                title: 'books', 
+                books: '',
+                dateTime: formatted,
+                date_due: duedate
+
+            });
+        }else{
+            res.render('books', {
+                title: 'Books', 
+                books: rows,
+                dateTime: formatted,
+                date_due: duedate
+            });
+        }
+    });
+});
+
+router.post('/add', (req, res) => {
+
+    let data = {
+        student_id: req.body.student_id,
+        book_id: req.body.book_id,
+        date_requested: req.body.dateTime,
+        due_date: req.body.dueDate
+    }
+
+    conn.query('INSERT INTO library.requests SET ?;',data, (err, results) => {
+        if (err) throw err
+        res.redirect('/books')
+    });
+});
 
 
 module.exports = router;

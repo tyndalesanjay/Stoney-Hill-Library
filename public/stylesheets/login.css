@@ -15,7 +15,7 @@
 }
 
 .left img{
-    width: 65%;
+    width: 85%;
     height: 50%;
     opacity: 0.8;
     /* border: 1px solid red; */
@@ -43,11 +43,11 @@
     /* border: 1px solid red; */
 }
 
-form h1{
+form h2{
     width: 100%;
     text-align: center;
     margin: 0 auto 2.5vw auto;
-    font-size: 2.5vw;
+    font-size: 2.3vw;
     line-height: 2;
     border-bottom: 1px solid rgba(0, 0, 0, 0.047);
     font-weight: bold;

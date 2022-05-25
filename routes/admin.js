@@ -19,24 +19,32 @@ router.get('/', (req, res) => {
 
 // GET TRAINEES TABLE
 router.get('/students', (req, res) => {
+    if(req.session.loggedin === true){
     conn.query('SELECT * FROM students', (err, results) => {
         if (err) {
-            res.render('admin/trainees', { title: 'Trainees', trainees: ''});
+            res.render('admin/students', { title: 'Students', students: ''});
         }else {
-            res.render('admin/trainees', { title: 'Trainees', trainees: results});
+            res.render('admin/students', { title: 'Students', students: results});
         }
     });
+    } else {
+        res.redirect('/login');
+    }
 });
 
 // GET LUNCH TABLE
-router.get('/lunches', (req, res) => {
+router.get('/requests', (req, res) => {
+    if(req.session.loggedin === true){
     conn.query('SELECT * FROM requests', (err, results) => {
         if (err) {
-            res.render('admin/lunches', { title: 'Lunch Ordered', requests: ''});
+            res.render('admin/requests', { title: 'Lunch Ordered', requests: ''});
         }else {
-            res.render('admin/lunches', { title: 'Lunch Ordered', requests: results});
+            res.render('admin/requests', { title: 'Lunch Ordered', requests: results});
         }
     });
+    } else {
+        res.redirect('/login');
+    }
 });
 
 module.exports = router;
