@@ -23,7 +23,7 @@ router.post('/authlogin', function(req, res, next) {
     }
     else { // if login found
         //Assign session variables based on login credentials                
-         req.session.loggedin = true;
+        req.session.loggedin = true;
         req.session.tid = results[0].id,
         req.session.f_name = results[0].f_name;
         req.session.email = results[0].email;

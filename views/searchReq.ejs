@@ -27,7 +27,7 @@
               <a class="nav-link" href="/books">Books</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/searchReq">Requested</a>
+                <a class="nav-link" href="/searchReq">Requested</a>
             </li>
           </ul>
           <form class="d-flex" action="/books/search" method="get">
@@ -38,28 +38,61 @@
       </div>
     </nav>
     <div class="meals_container row">
+      <form action="/searchReq/search" method="get">
+        <input type="search" name="student_id" placeholder="search">
+        <input type="submit" value="search">
+      </form>
       <% if (messages.error) { %>
         <p style="color:red"><%- messages.error %></p>
       <% } %>
-      <% books.forEach(function(book){ %>
-        <form action="/books/add" method="post" class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="https://media.discordapp.net/attachments/889362805713678407/974828104927301773/No_image_available.png?width=632&height=632" class="card-img-top" alt="<%= book.book_name %>">
-            <div class="card-body">
-              <p><input type="text" name="book_id" value="<%= book.id %>" hidden></p>
-              <h5 class="card-title"><%= book.book_name %></h5>
-              <p class="card-text"><%= book.category_name %></p>
-              <div class="form-group">
-                <input type="text" name="student_id" class="form-control" placeholder="Student ID" required>
-                <small id="emailHelp" class="form-text text-muted">Enter Student ID to borrow book</small>
-              </div>
-                <input type="text" name="dateTime" id="orderdate" value="<%= dateTime.toLocaleString() %>" readonly hidden>
-                <input type="text" name="dueDate" id="orderdate" value="<%= date_due.toLocaleString() %>" readonly  hidden>
-              <input type="submit" value="Check Out Book" class="btn btn-primary">
-            </div>
-          </div>
-        </form>
-      <% }); %>
+
+      <div class="lunch_table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Students ID</th>
+              <th scope="col">Meal Name</th>
+              <th scope="col">Trainee ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(results.length){ for(var i=0; i< results.length; i++) { %>
+              <tr>
+                <!-- <td scope="row"><%= results[i].id %></td> -->
+                <td scope="row"><%= results[i].student_id %></td>
+                <td scope="row"><%= results[i].fname %></td>
+                <td scope="row"><%= results[i].lname %></td>
+                <td scope="row"><%= results[i].book_name %></td>
+                <td scope="row"><%= results[i].due_date %></td>
+                <td>
+                  <%= results[i].date_requested %>
+                </td>
+                <td>
+                  <%= results[i].date_requested %>
+                </td>
+                <!-- <td>
+                  <%= results[i].date %>
+                </td> -->
+                <td>
+                  <a href="#">
+                    <i class="fa-solid fa-file-pen"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </a>
+                </td>
+              </tr>
+              <% } }else { %>
+              <tr>
+                <th scope="row" colspan="5">No Records Found</th>
+              </tr>
+            <% } %>
+            </tbody>
+        </table>
+      </div>
+      
     </div>
   </body>
 </html>

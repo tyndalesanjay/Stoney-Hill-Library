@@ -66,19 +66,35 @@ router.get('/search', (req, res) => {
     });
 });
 
-router.post('/add', (req, res) => {
+router.post('/add', (req, res, next) => {
 
-    let data = {
-        student_id: req.body.student_id,
-        book_id: req.body.book_id,
-        date_requested: req.body.dateTime,
-        due_date: req.body.dueDate
-    }
+    conn.query('SELECT * FROM library.requests WHERE student_id =' + req.body.student_id, (err, results) => {
+        // if (err) throw err;
+        console.log(results.length <= 2 )
+        if (results.length < 2 ){
+            // console.log(results.length >= 2)
+            let data = {
+                student_id: req.body.student_id,
+                book_id: req.body.book_id,
+                date_requested: req.body.dateTime,
+                due_date: req.body.dueDate
+            }
 
-    conn.query('INSERT INTO library.requests SET ?;',data, (err, results) => {
-        if (err) throw err
-        res.redirect('/books')
+            conn.query('INSERT INTO library.requests SET ?;',data, (err, results) => {
+            if (err) throw err
+            res.redirect('/books')
+        })
+        }else{
+            console.log('error')
+            req.flash('error', 'Maximum Books Reached')
+            res.redirect('/books')
+        }
+        
     });
+    
+    
+
+    
 });
 
 
