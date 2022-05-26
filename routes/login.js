@@ -32,10 +32,10 @@ router.post('/authlogin', function(req, res, next) {
 })
 
 // Logout user
-router.get('/logout', function (req, res) {
-  req.session.destroy();
-  req.flash('success', 'Enter Your Login Credentials');
-  res.redirect('/login/login');
-});
+// router.get('/logout', function (req, res) {
+//   req.session.destroy();
+//   req.flash('success', 'Enter Your Login Credentials');
+//   res.redirect('/login');
+// });
 
 module.exports = router;

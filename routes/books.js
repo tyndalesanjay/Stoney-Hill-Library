@@ -38,9 +38,9 @@ router.get('/search', (req, res) => {
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');
 
-        const today = new Date();
-        var duedate = new Date();
-            duedate.setDate(today.getDate(formatted) + 14);
+    const today = new Date();
+    var date = new Date();
+    var duedate = new Date(date.setDate(today.getDate(formatted) + 14)).toISOString().slice(0, 19).replace('T', ' ');
 
     var category_name = req.query.category_name;
     var sql = "SELECT * FROM library.books WHERE category_name LIKE '%"+ category_name +"%'";
@@ -52,7 +52,7 @@ router.get('/search', (req, res) => {
                 books: '',
                 dateTime: formatted,
                 date_due: duedate
-
+                
             });
         }else{
             res.render('books', {
@@ -83,7 +83,7 @@ router.post('/add', (req, res, next) => {
             res.redirect('/books')
         })
         }else{
-            req.flash('error', 'Maximum Books Reached')
+            req.flash('error', `<strong>Warning!!!</strong> <span>Please return <b>One (1)</b> of your books to Continue.</span>`)
             res.redirect('/books')
         }
         

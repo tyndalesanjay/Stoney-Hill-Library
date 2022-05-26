@@ -31,23 +31,27 @@
             </li>
           </ul>
           <form class="d-flex" action="/books/search" method="get">
-            <input class="form-control me-2" name="category_name" type="text" placeholder="Search">
+            <input class="form-control me-2" name="category_name" type="text" placeholder="Search By Categories.....">
             <input type="submit" value="search" class="btn btn-primary">
           </form>
         </div>
       </div>
     </nav>
-    <div class="meals_container row">
-      <% if (messages.error) { %>
-        <p style="color:red"><%- messages.error %></p>
-      <% } %>
+    <div class="meals_container row mx-auto">
+      
+
+        <% if (messages.error) { %>
+          <div class="alert alert-danger" role="alert">
+          <%- messages.error %>
+        </div>
+          <% } %>
       <% books.forEach(function(book){ %>
-        <form action="/books/add" method="post" class="col">
-          <div class="card" style="width: 18rem;">
+        <form action="/books/add" method="post" class="col ">
+          <div class="card m-4" style="width: 19rem; box-shadow: rgb(233, 223, 223) 0px 0px 3px 3px ;">
             <img src="https://media.discordapp.net/attachments/889362805713678407/974828104927301773/No_image_available.png?width=632&height=632" class="card-img-top" alt="<%= book.book_name %>">
             <div class="card-body">
               <p><input type="text" name="book_id" value="<%= book.id %>" hidden></p>
-              <h5 class="card-title"><%= book.book_name %></h5>
+              <h5 class="card-title" style="height: 3.5vw;"><%= book.book_name %></h5>
               <p class="card-text"><%= book.category_name %></p>
               <div class="form-group">
                 <input type="text" name="student_id" class="form-control" placeholder="Student ID" required>

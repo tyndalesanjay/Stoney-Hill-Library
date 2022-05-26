@@ -13,21 +13,41 @@
     <script src="https://kit.fontawesome.com/b7a2ac83f3.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <a href="/">
-          <img
-            src="https://cdn.discordapp.com/attachments/882362353507778613/975983795847172156/logo2-01-removebg-preview.png"
-            alt="logo">
-        </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">School is almost over</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/students">Enrolled Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/requests">Book Request</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Menu</a>
+              <ul class="dropdown-menu ">
+                <li><a class="dropdown-item text-black" href="#">Add  Students</a></li>
+                <li><a class="dropdown-item text-black" href="#"></a></li>
+                <li><a class="dropdown-item text-black" href="/login/logout">Sign Out</a></li>
+              </ul>
+            </div>
+          </span>
+        </div>
       </div>
-    
-      <a href="/login">Sign in</a>
-    </header>
+    </nav>
 
     <div class="admin_links">
-      <a href="/admin/students">Students Table</a>
-      <a href="/admin/requests">Requests Table</a>
+      <a href="/admin/students">Enrolled Students</a>
+      <a href="/admin/requests">Book Requests</a>
     </div>
     
     

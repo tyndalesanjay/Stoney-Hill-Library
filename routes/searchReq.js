@@ -20,12 +20,8 @@ router.get('/search', (req, res) => {
     
     if (student_id <= ''){
         console.log(student_id)
-        res.redirect('/searchReq', 
-        // { 
-        //     title: 'books', 
-        //     results: '',
-        //   }
-          );
+        res.redirect('/searchReq'
+        );
     }
     else{
         console.log(student_id)
