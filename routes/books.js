@@ -7,11 +7,11 @@ var dateTime = require('node-datetime');
 /* GET home page. */
 router.get('/', (req, res) => {
         var dt = dateTime.create();
-        var formatted = dt.format('Y/m/d H:M:S');
+        var formatted = dt.format('Y-m-d H:M:S');
 
         const today = new Date();
-        var duedate = new Date();
-            duedate.setDate(today.getDate(formatted) + 14);
+        var date = new Date();
+        var duedate = new Date(date.setDate(today.getDate(formatted) + 14)).toISOString().slice(0, 19).replace('T', ' ');
 
         conn.query('SELECT * FROM books', (err, rows) => {
             if (err){
@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
 router.get('/search', (req, res) => {
 
     var dt = dateTime.create();
-        var formatted = dt.format('Y/m/d H:M:S');
+    var formatted = dt.format('Y-m-d H:M:S');
 
         const today = new Date();
         var duedate = new Date();
@@ -47,7 +47,6 @@ router.get('/search', (req, res) => {
 
     conn.query(sql , (err, rows) => {
         if (err){
-            console.log(err)
             res.render('books', { 
                 title: 'books', 
                 books: '',
@@ -69,10 +68,9 @@ router.get('/search', (req, res) => {
 router.post('/add', (req, res, next) => {
 
     conn.query('SELECT * FROM library.requests WHERE student_id =' + req.body.student_id, (err, results) => {
-        // if (err) throw err;
-        console.log(results.length <= 2 )
+        
+        // console.log(results.length <= 2 )
         if (results.length < 2 ){
-            // console.log(results.length >= 2)
             let data = {
                 student_id: req.body.student_id,
                 book_id: req.body.book_id,
@@ -85,7 +83,6 @@ router.post('/add', (req, res, next) => {
             res.redirect('/books')
         })
         }else{
-            console.log('error')
             req.flash('error', 'Maximum Books Reached')
             res.redirect('/books')
         }

@@ -32,7 +32,7 @@
           </ul>
           <form class="d-flex" action="/books/search" method="get">
             <input class="form-control me-2" name="category_name" type="text" placeholder="Search">
-            <input type="submit" value="search">
+            <input type="submit" value="search" class="btn btn-primary">
           </form>
         </div>
       </div>
@@ -53,9 +53,9 @@
                 <input type="text" name="student_id" class="form-control" placeholder="Student ID" required>
                 <small id="emailHelp" class="form-text text-muted">Enter Student ID to borrow book</small>
               </div>
-                <input type="text" name="dateTime" id="orderdate" value="<%= dateTime.toLocaleString() %>" readonly hidden>
-                <input type="text" name="dueDate" id="orderdate" value="<%= date_due.toLocaleString() %>" readonly  hidden>
-              <input type="submit" value="Check Out Book" class="btn btn-primary">
+                <input type="datetime" name="dateTime" id="orderdate" value="<%= dateTime %>" readonly hidden>
+                <input type="datetime" name="dueDate" id="orderdate" value="<%= date_due %>" readonly  hidden>
+                <input type="submit" value="Check Out Book" class="btn btn-primary">
             </div>
           </div>
         </form>

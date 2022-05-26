@@ -16,7 +16,6 @@ router.post('/authlogin', function(req, res, next) {
   conn.query('SELECT * FROM library.librarians WHERE email = ? AND BINARY password = ?', [email, password], function(err, results, fields) {
        
     // if login is incorrect or not found
-    // console.log(results.length);
     if (results.length <= 0) {
         req.flash('error', 'Invalid credentials Please try again!')
         res.redirect('/login')
@@ -28,7 +27,6 @@ router.post('/authlogin', function(req, res, next) {
         req.session.f_name = results[0].f_name;
         req.session.email = results[0].email;
         res.redirect('/admin');
-        console.log(req.session.tid)
     }            
   })
 })

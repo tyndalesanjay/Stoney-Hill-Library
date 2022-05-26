@@ -31,30 +31,31 @@
             </li>
           </ul>
           <form class="d-flex" action="/books/search" method="get">
-            <input class="form-control me-2" name="category_name" type="text" placeholder="Search">
-            <input type="submit" value="search">
+            <input class="form-control me-2" name="category_name" type="text" placeholder="Search Books by Category....">
+            <input type="submit" value="Search" class="btn btn-primary">
           </form>
         </div>
       </div>
     </nav>
     <div class="meals_container row">
-      <form action="/searchReq/search" method="get">
-        <input type="search" name="student_id" placeholder="search">
-        <input type="submit" value="search">
+      <form class="d-flex p-5 ms-3" action="/searchReq/search" method="get">
+        <input class="form-control me-5" name="student_id" type="text" placeholder="Search Books Requests by ID....">
+        <input type="submit" value="Search" class="btn btn-primary me-5 px-5">
       </form>
       <% if (messages.error) { %>
         <p style="color:red"><%- messages.error %></p>
       <% } %>
 
       <div class="lunch_table">
-        <table class="table table-striped">
+        <table class="table table-active">
           <thead>
             <tr>
               <th scope="col">Students ID</th>
-              <th scope="col">Meal Name</th>
-              <th scope="col">Trainee ID</th>
-              <th scope="col">Date</th>
-              <th scope="col">Actions</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">Date Requested</th>
+              <th scope="col">Due Date</th>
             </tr>
           </thead>
           <tbody>
@@ -65,28 +66,12 @@
                 <td scope="row"><%= results[i].fname %></td>
                 <td scope="row"><%= results[i].lname %></td>
                 <td scope="row"><%= results[i].book_name %></td>
+                <td scope="row"><%= results[i].date_requested.toLocaleString() %></td>
                 <td scope="row"><%= results[i].due_date %></td>
-                <td>
-                  <%= results[i].date_requested %>
-                </td>
-                <td>
-                  <%= results[i].date_requested %>
-                </td>
-                <!-- <td>
-                  <%= results[i].date %>
-                </td> -->
-                <td>
-                  <a href="#">
-                    <i class="fa-solid fa-file-pen"></i>
-                  </a>
-                  <a href="#">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </a>
-                </td>
               </tr>
               <% } }else { %>
               <tr>
-                <th scope="row" colspan="5">No Records Found</th>
+                <th scope="row" colspan="6" class="text-center">Enter Your Student ID</th>
               </tr>
             <% } %>
             </tbody>
