@@ -38,10 +38,10 @@
       </div>
     </nav>
     <div class="meals_container row">
-      <form class="d-flex p-5" action="/searchReq/search" method="get">
-        <input class="form-control me-5" name="student_id" type="text" placeholder="Search Books Requests by ID....">
+      <form class="d-flex p-5 ms-3" action="/searchReq/searchoverdue" method="get">
+        <input class="form-control me-5" name="student_id" type="text" placeholder="Search Overdue books by Student ID....">
         <input type="submit" value="Search" class="btn btn-primary me-5 px-5">
-        <a class="btn btn-primary" href="/searchReq/searchoverdue">OverDue </a>
+        <a class="btn btn-primary" href="/searchReq">Requests</a>
       </form>
       
       <% if (messages.error) { %>
@@ -58,34 +58,21 @@
               <th scope="col">Book Name</th>
               <th scope="col">Date Requested</th>
               <th scope="col">Due Date</th>
-              <th scope="col">Days Left</th>
+              <th scope="col">OverDue</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <% if(results.length){ for(var i=0; i< results.length; i++) { %>
               <tr>
-                <!-- <td scope="row"><%= results[i].id %></td> -->
+                <td scope="row"><%= results[i].id %></td>
                 <td scope="row"><%= results[i].student_id %></td>
                 <td scope="row"><%= results[i].fname %></td>
                 <td scope="row"><%= results[i].lname %></td>
                 <td scope="row"><%= results[i].book_name %></td>
                 <td scope="row"><%= results[i].date_requested.toLocaleString() %></td>
                 <td scope="row"><%= results[i].due_date.toLocaleString() %></td>
-                <td>
-                  <% 
-                    var date1 = new Date(results[i].date_requested);
-                    var date2 = new Date();
-                    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-                    var daysDiff = Math.ceil(timeDiff / (1000 * 3600 *24));
-                    var leftValid = 14 - daysDiff;
-                  %>
-                  <% if (leftValid <= 5) {%>
-                    <span style="color: red !important;"><%= leftValid + " " + "Days" %></span>
-                  <%}else {%>
-                    <%= leftValid + " " + "Days" %>
-                  <% } %>
-                </td>
+                <td scope="row"><%= results[i].overdue.toLocaleString() %></td>
                 <td scope="row"><a href="/searchReq/delete/<%= results[i].id %>" class="btn btn-primary">Return</a></td>
               </tr>
               <% } }else { %>
@@ -96,6 +83,7 @@
             </tbody>
         </table>
       </div>
+      
     </div>
   </body>
 </html>

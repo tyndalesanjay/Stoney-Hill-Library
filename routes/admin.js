@@ -35,11 +35,13 @@ router.get('/students', (req, res) => {
 // GET LUNCH TABLE
 router.get('/requests', (req, res) => {
     if(req.session.loggedin === true){
+        // var sql = "SELECT *, DATE(due_date) AS overdue FROM requests WHERE DATE(due_date) < now();"
+    // conn.query(sql, (err, results) => {
     conn.query('SELECT * FROM requests', (err, results) => {
         if (err) {
-            res.render('admin/requests', { title: 'Lunch Ordered', requests: ''});
+            res.render('admin/requests', { title: 'Books Requested', requests: ''});
         }else {
-            res.render('admin/requests', { title: 'Lunch Ordered', requests: results});
+            res.render('admin/requests', { title: 'Books Requested', requests: results});
         }
     });
     } else {
@@ -47,6 +49,25 @@ router.get('/requests', (req, res) => {
     }
 });
 
+
+// get overdue books
+router.get('/overdue', (req, res) => {
+    if(req.session.loggedin === true){
+        
+        var sql = "SELECT *, DATE(due_date) AS overdue FROM requests WHERE DATE(due_date) < now();"
+        conn.query(sql, (err, results) => {
+        if (err) {
+            conn.query
+            
+            // res.render('admin/overdue', { title: 'Books Requested', requests: ''});
+        }else {
+            res.render('admin/overdue', { title: 'Books Requested', requests: results});
+        }
+    });
+    } else {
+        res.redirect('/login');
+    }
+});
 
 
 module.exports = router;

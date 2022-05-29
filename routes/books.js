@@ -65,6 +65,7 @@ router.get('/search', (req, res) => {
     });
 });
 
+// Insert into requests table 
 router.post('/add', (req, res, next) => {
 
     conn.query('SELECT * FROM library.requests WHERE student_id =' + req.body.student_id, (err, results) => {
@@ -79,19 +80,19 @@ router.post('/add', (req, res, next) => {
             }
 
             conn.query('INSERT INTO library.requests SET ?;',data, (err, results) => {
-            if (err) throw err
-            res.redirect('/books')
-        })
+                if (err) throw err
+
+                // let updateStatus = "UPDATE requests SET approved = 1 WHERE student_id=' + req.body.student_id"
+                conn.query('UPDATE requests SET approved = 1 WHERE student_id=' + req.body.student_id, (err, results) => {
+                    if (err) throw err
+                    res.redirect('/books')
+                })
+            })
         }else{
             req.flash('error', `<strong>Warning!!!</strong> <span>Please return <b>One (1)</b> of your books to Continue.</span>`)
             res.redirect('/books')
-        }
-        
+        } 
     });
-    
-    
-
-    
 });
 
 
