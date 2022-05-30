@@ -45,7 +45,7 @@ router.get('/search', (req, res) => {
     var category_name = req.query.category_name;
     var sql = "SELECT * FROM library.books WHERE category_name LIKE '%"+ category_name +"%'";
 
-    conn.query(sql , (err, rows) => {
+    conn.query(sql, (err, rows) => {
         if (err){
             res.render('books', { 
                 title: 'books', 

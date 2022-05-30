@@ -11,7 +11,6 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="javascript:void(0)">Logo</a>
@@ -38,13 +37,11 @@
       </div>
     </nav>
     <div class="meals_container row mx-auto">
-      
-
-        <% if (messages.error) { %>
-          <div class="alert alert-danger" role="alert">
+      <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert">
           <%- messages.error %>
         </div>
-          <% } %>
+      <% } %>
       <% books.forEach(function(book){ %>
         <form action="/books/add" method="post" class="col ">
           <div class="card m-4" style="width: 19rem; box-shadow: rgb(233, 223, 223) 0px 0px 3px 3px ;">
@@ -57,9 +54,9 @@
                 <input type="text" name="student_id" class="form-control" placeholder="Student ID" required>
                 <small id="emailHelp" class="form-text text-muted">Enter Student ID to borrow book</small>
               </div>
-                <input type="datetime" name="dateTime" id="orderdate" value="<%= dateTime %>" readonly hidden>
-                <input type="datetime" name="dueDate" id="orderdate" value="<%= date_due %>" readonly  hidden>
-                <input type="submit" value="Check Out Book" class="btn btn-primary">
+              <input type="datetime" name="dateTime" id="orderdate" value="<%= dateTime %>" readonly hidden>
+              <input type="datetime" name="dueDate" id="orderdate" value="<%= date_due %>" readonly  hidden>
+              <input type="submit" value="Check Out Book" class="btn btn-primary">
             </div>
           </div>
         </form>
